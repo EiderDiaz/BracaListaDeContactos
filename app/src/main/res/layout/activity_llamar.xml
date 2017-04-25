@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.eider.bracalistadecontactos.llamar">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20dp"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        android:id="@+id/nombre"
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:text="este men" />
+
+    <TextView
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20dp"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        android:id="@+id/numero"
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:text="555" />
+    <TextView
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20dp"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        android:id="@+id/correo"
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:text="correo" />
+
+    <EditText
+        android:id="@+id/editTextsms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="escribe tu mensaje aqui" />
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_margin="30dp"
+            android:id="@+id/llamar"
+            android:layout_width="99dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/phone" />
+
+        <ImageView
+            android:layout_margin="30dp"
+            android:id="@+id/sms"
+            android:layout_width="99dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/sms" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+</LinearLayout>
