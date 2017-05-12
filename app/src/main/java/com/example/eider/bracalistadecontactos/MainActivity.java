@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -47,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         adduser = (ImageView) findViewById(R.id.AddUser);
         //String [] contactos  = getResources().getStringArray(R.array.contactos);
 
-        contactos.add(new contacto("ana laura", "6681642440", "correo"));
-        contactos.add(new contacto("NOeider", "6681696325", "correo"));
+
 
         //________________menu contextual
         registerForContextMenu(lv);
@@ -80,6 +80,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        SQLite bd = new SQLite(this);
+        Cursor c = bd.seleccionarTablaContactos();
+
+        //Nos aseguramos de que existe al menos un registro
+        if (c.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                String nombre = c.getString(1);
+                String celular = c.getString(2);
+                String correo = c.getString(3);
+
+                contacto user = new contacto(nombre, celular, correo);
+                contactos.add(user);
+                lv.setAdapter(adapter);
+
+            } while (c.moveToNext());
+
+        }
     }
 
     //________________menu contextual _______________________________________
@@ -179,12 +197,14 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (requestCode == 1) {//lo que mandas de aqui
+        if (requestCode == 1) {//lo que mandas de aqui ///agtegar
             if(resultCode == Activity.RESULT_OK){//lo que resulta de la otra actividad
 
                 String nombre=data.getStringExtra("nombre");
                 String numero=data.getStringExtra("numero");
                 String correo=data.getStringExtra("correo");
+                SQLite db = new SQLite(this);
+                db.insertarRegistro(nombre,numero,correo);
                 contactos.add(new contacto(nombre,numero,correo));
                 lv.setAdapter(adapter);
 
@@ -195,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show();
             }
         }
-        if(requestCode==0){
+        if(requestCode==0){//editar
             if(resultCode == Activity.RESULT_OK){
 
                 String indice=data.getStringExtra("indice");

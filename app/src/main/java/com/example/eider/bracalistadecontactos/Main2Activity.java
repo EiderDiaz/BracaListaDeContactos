@@ -54,8 +54,6 @@ public class Main2Activity extends AppCompatActivity  implements Validator.Valid
             String nombre = extras.getString("nombre");
             String tel = extras.getString("numero");
             String correo = extras.getString("correo");
-
-            Toast.makeText(this,"entre si los extras no son nulos:    "+dato, Toast.LENGTH_SHORT).show();
           this.nombre.setText(nombre);
             this.numero.setText(tel);
             this.correo.setText(correo);
